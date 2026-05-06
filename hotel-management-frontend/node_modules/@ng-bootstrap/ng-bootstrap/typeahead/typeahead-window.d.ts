@@ -13,6 +13,10 @@ export interface ResultTemplateContext {
      * Search term from the `<input>` used to get current result.
      */
     term: string;
+    /**
+     * The function which transforms the result into a string
+     */
+    formatter: (result: any) => string;
 }
 export declare class NgbTypeaheadWindow implements OnInit {
     activeIdx: number;
@@ -63,5 +67,5 @@ export declare class NgbTypeaheadWindow implements OnInit {
     ngOnInit(): void;
     private _activeChanged;
     static ɵfac: i0.ɵɵFactoryDeclaration<NgbTypeaheadWindow, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<NgbTypeaheadWindow, "ngb-typeahead-window", ["ngbTypeaheadWindow"], { "id": "id"; "focusFirst": "focusFirst"; "results": "results"; "term": "term"; "formatter": "formatter"; "resultTemplate": "resultTemplate"; "popupClass": "popupClass"; }, { "selectEvent": "select"; "activeChangeEvent": "activeChange"; }, never, never, true, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<NgbTypeaheadWindow, "ngb-typeahead-window", ["ngbTypeaheadWindow"], { "id": { "alias": "id"; "required": false; }; "focusFirst": { "alias": "focusFirst"; "required": false; }; "results": { "alias": "results"; "required": false; }; "term": { "alias": "term"; "required": false; }; "formatter": { "alias": "formatter"; "required": false; }; "resultTemplate": { "alias": "resultTemplate"; "required": false; }; "popupClass": { "alias": "popupClass"; "required": false; }; }, { "selectEvent": "select"; "activeChangeEvent": "activeChange"; }, never, never, true, never>;
 }

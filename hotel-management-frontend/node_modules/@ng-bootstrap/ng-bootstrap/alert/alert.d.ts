@@ -1,15 +1,14 @@
-import { EventEmitter, Renderer2, ElementRef, OnChanges, OnInit, SimpleChanges, NgZone } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NgbAlertConfig } from './alert-config';
 import * as i0 from "@angular/core";
 /**
  * Alert is a component to provide contextual feedback messages for user.
  *
  * It supports several alert types and can be dismissed.
  */
-export declare class NgbAlert implements OnInit, OnChanges {
-    private _renderer;
-    private _element;
+export declare class NgbAlert {
+    private _config;
+    private _elementRef;
     private _zone;
     /**
      * If `true`, alert closing will be animated.
@@ -24,7 +23,7 @@ export declare class NgbAlert implements OnInit, OnChanges {
      * If `true`, alert can be dismissed by the user.
      *
      * The close button (×) will be displayed and you can be notified
-     * of the event with the `(close)` output.
+     * of the event with the `(closed)` output.
      */
     dismissible: boolean;
     /**
@@ -40,7 +39,6 @@ export declare class NgbAlert implements OnInit, OnChanges {
      * @since 8.0.0
      */
     closed: EventEmitter<void>;
-    constructor(config: NgbAlertConfig, _renderer: Renderer2, _element: ElementRef, _zone: NgZone);
     /**
      * Triggers alert closing programmatically (same as clicking on the close button (×)).
      *
@@ -52,8 +50,6 @@ export declare class NgbAlert implements OnInit, OnChanges {
      * @since 8.0.0
      */
     close(): Observable<void>;
-    ngOnChanges(changes: SimpleChanges): void;
-    ngOnInit(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<NgbAlert, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<NgbAlert, "ngb-alert", ["ngbAlert"], { "animation": "animation"; "dismissible": "dismissible"; "type": "type"; }, { "closed": "closed"; }, never, ["*"], true, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<NgbAlert, "ngb-alert", ["ngbAlert"], { "animation": { "alias": "animation"; "required": false; }; "dismissible": { "alias": "dismissible"; "required": false; }; "type": { "alias": "type"; "required": false; }; }, { "closed": "closed"; }, never, ["*"], true, never>;
 }

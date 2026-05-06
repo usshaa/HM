@@ -2,7 +2,7 @@ import { NgbDate } from './ngb-date';
 import * as i0 from "@angular/core";
 export declare function fromJSDate(jsDate: Date): NgbDate;
 export declare function toJSDate(date: NgbDate): Date;
-export declare type NgbPeriod = 'y' | 'm' | 'd';
+export type NgbPeriod = 'y' | 'm' | 'd';
 export declare function NGB_DATEPICKER_CALENDAR_FACTORY(): NgbCalendarGregorian;
 /**
  * A service that represents the calendar used by the datepicker.

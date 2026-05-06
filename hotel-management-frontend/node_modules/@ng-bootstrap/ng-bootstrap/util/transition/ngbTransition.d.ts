@@ -1,7 +1,7 @@
 import { NgZone } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-export declare type NgbTransitionStartFn<T = any> = (element: HTMLElement, animation: boolean, context: T) => NgbTransitionEndFn | void;
-export declare type NgbTransitionEndFn = () => void;
+export type NgbTransitionStartFn<T = any> = (element: HTMLElement, animation: boolean, context: T) => NgbTransitionEndFn | void;
+export type NgbTransitionEndFn = () => void;
 export interface NgbTransitionOptions<T> {
     animation: boolean;
     runningTransition: 'continue' | 'stop';

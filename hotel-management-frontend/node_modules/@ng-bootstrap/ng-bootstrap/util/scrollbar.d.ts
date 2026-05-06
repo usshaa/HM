@@ -1,6 +1,6 @@
 import * as i0 from "@angular/core";
 /** Type for the callback used to revert the scrollbar. */
-export declare type ScrollbarReverter = () => void;
+export type ScrollbarReverter = () => void;
 /**
  * Utility to handle the scrollbar.
  *
@@ -9,7 +9,6 @@ export declare type ScrollbarReverter = () => void;
  */
 export declare class ScrollBar {
     private _document;
-    constructor(_document: any);
     /**
      * To be called to hide a potential vertical scrollbar:
      * - if a scrollbar is there and has a width greater than 0, adds some compensation

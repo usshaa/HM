@@ -10,7 +10,6 @@ export declare function isDefined(value: any): boolean;
 export declare function isPromise<T>(v: any): v is Promise<T>;
 export declare function padNumber(value: number): string;
 export declare function regExpEscape(text: any): any;
-export declare function hasClassName(element: any, className: string): boolean;
 export declare function closest(element: HTMLElement, selector?: string): HTMLElement | null;
 /**
  * Force a browser reflow
@@ -24,3 +23,8 @@ export declare function reflow(element: HTMLElement): DOMRect;
  */
 export declare function runInZone<T>(zone: NgZone): OperatorFunction<T, T>;
 export declare function removeAccents(str: string): string;
+/**
+ * Returns the active element in the given root.
+ * If the active element is inside a shadow root, it is searched recursively.
+ */
+export declare function getActiveElement(root?: Document | ShadowRoot): Element | null;

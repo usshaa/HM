@@ -1,5 +1,4 @@
-import { ChangeDetectorRef, EventEmitter, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
-import { NgbRatingConfig } from './rating-config';
+import { EventEmitter, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import * as i0 from "@angular/core";
 /**
@@ -19,10 +18,14 @@ export interface StarTemplateContext {
  * A directive that helps visualising and interacting with a star rating bar.
  */
 export declare class NgbRating implements ControlValueAccessor, OnInit, OnChanges {
-    private _changeDetectorRef;
     contexts: StarTemplateContext[];
-    disabled: boolean;
     nextRate: number;
+    private _config;
+    private _changeDetectorRef;
+    /**
+     * If `true`, the rating can't be changed or focused.
+     */
+    disabled: boolean;
     /**
      * The maximal rating that can be given.
      */
@@ -52,7 +55,7 @@ export declare class NgbRating implements ControlValueAccessor, OnInit, OnChange
      *
      * @since 13.1.0
      */
-    tabindex: number | string;
+    tabindex: string | number;
     /**
      * Allows to provide a function to set a custom aria-valuetext
      *
@@ -79,7 +82,6 @@ export declare class NgbRating implements ControlValueAccessor, OnInit, OnChange
     rateChange: EventEmitter<number>;
     onChange: (_: any) => void;
     onTouched: () => void;
-    constructor(config: NgbRatingConfig, _changeDetectorRef: ChangeDetectorRef);
     isInteractive(): boolean;
     enter(value: number): void;
     handleBlur(): void;
@@ -97,5 +99,5 @@ export declare class NgbRating implements ControlValueAccessor, OnInit, OnChange
     private _updateMax;
     private _setupContexts;
     static ɵfac: i0.ɵɵFactoryDeclaration<NgbRating, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<NgbRating, "ngb-rating", never, { "max": "max"; "rate": "rate"; "readonly": "readonly"; "resettable": "resettable"; "starTemplate": "starTemplate"; "tabindex": "tabindex"; "ariaValueText": "ariaValueText"; }, { "hover": "hover"; "leave": "leave"; "rateChange": "rateChange"; }, ["starTemplateFromContent"], never, true, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<NgbRating, "ngb-rating", never, { "disabled": { "alias": "disabled"; "required": false; }; "max": { "alias": "max"; "required": false; }; "rate": { "alias": "rate"; "required": false; }; "readonly": { "alias": "readonly"; "required": false; }; "resettable": { "alias": "resettable"; "required": false; }; "starTemplate": { "alias": "starTemplate"; "required": false; }; "tabindex": { "alias": "tabindex"; "required": false; }; "ariaValueText": { "alias": "ariaValueText"; "required": false; }; }, { "hover": "hover"; "leave": "leave"; "rateChange": "rateChange"; }, ["starTemplateFromContent"], never, true, never>;
 }

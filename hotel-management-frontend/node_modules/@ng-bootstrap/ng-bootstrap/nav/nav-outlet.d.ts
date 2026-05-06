@@ -1,14 +1,13 @@
-import { AfterViewInit, ChangeDetectorRef, ElementRef, NgZone } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
 import { NgbNav, NgbNavItem } from './nav';
 import * as i0 from "@angular/core";
 export declare class NgbNavPane {
-    elRef: ElementRef<HTMLElement>;
+    nativeElement: HTMLElement;
     item: NgbNavItem;
     nav: NgbNav;
     role: string;
-    constructor(elRef: ElementRef<HTMLElement>);
     static ɵfac: i0.ɵɵFactoryDeclaration<NgbNavPane, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<NgbNavPane, "[ngbNavPane]", never, { "item": "item"; "nav": "nav"; "role": "role"; }, {}, never, never, true, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<NgbNavPane, "[ngbNavPane]", never, { "item": { "alias": "item"; "required": false; }; "nav": { "alias": "nav"; "required": false; }; "role": { "alias": "role"; "required": false; }; }, {}, never, never, true, never>;
 }
 /**
  * The outlet where currently active nav content will be displayed.
@@ -28,12 +27,11 @@ export declare class NgbNavOutlet implements AfterViewInit {
      * Reference to the `NgbNav`
      */
     nav: NgbNav;
-    constructor(_cd: ChangeDetectorRef, _ngZone: NgZone);
     isPanelTransitioning(item: NgbNavItem): boolean;
     ngAfterViewInit(): void;
     private _updateActivePane;
     private _getPaneForItem;
     private _getActivePane;
     static ɵfac: i0.ɵɵFactoryDeclaration<NgbNavOutlet, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<NgbNavOutlet, "[ngbNavOutlet]", never, { "paneRole": "paneRole"; "nav": "ngbNavOutlet"; }, {}, never, never, true, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<NgbNavOutlet, "[ngbNavOutlet]", never, { "paneRole": { "alias": "paneRole"; "required": false; }; "nav": { "alias": "ngbNavOutlet"; "required": false; }; }, {}, never, never, true, never>;
 }

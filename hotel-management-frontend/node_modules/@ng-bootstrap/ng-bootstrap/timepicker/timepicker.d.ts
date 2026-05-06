@@ -95,5 +95,5 @@ export declare class NgbTimepicker implements ControlValueAccessor, OnChanges {
     ngOnChanges(changes: SimpleChanges): void;
     private propagateModelChange;
     static ɵfac: i0.ɵɵFactoryDeclaration<NgbTimepicker, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<NgbTimepicker, "ngb-timepicker", ["ngbTimepicker"], { "meridian": "meridian"; "spinners": "spinners"; "seconds": "seconds"; "hourStep": "hourStep"; "minuteStep": "minuteStep"; "secondStep": "secondStep"; "readonlyInputs": "readonlyInputs"; "size": "size"; }, {}, never, never, true, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<NgbTimepicker, "ngb-timepicker", ["ngbTimepicker"], { "meridian": { "alias": "meridian"; "required": false; }; "spinners": { "alias": "spinners"; "required": false; }; "seconds": { "alias": "seconds"; "required": false; }; "hourStep": { "alias": "hourStep"; "required": false; }; "minuteStep": { "alias": "minuteStep"; "required": false; }; "secondStep": { "alias": "secondStep"; "required": false; }; "readonlyInputs": { "alias": "readonlyInputs"; "required": false; }; "size": { "alias": "size"; "required": false; }; }, {}, never, never, true, never>;
 }

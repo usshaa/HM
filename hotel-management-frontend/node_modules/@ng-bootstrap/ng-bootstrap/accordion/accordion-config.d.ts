@@ -1,4 +1,3 @@
-import { NgbConfig } from '../ngb-config';
 import * as i0 from "@angular/core";
 /**
  * A configuration service for the [`NgbAccordionDirective`](#/components/accordion/api#NgbAccordionDirective).
@@ -8,13 +7,9 @@ import * as i0 from "@angular/core";
  */
 export declare class NgbAccordionConfig {
     private _ngbConfig;
-    closeOthers: boolean;
-    /**
-     * @deprecated 14.1.0
-     */
-    type: string;
     private _animation;
-    constructor(_ngbConfig: NgbConfig);
+    closeOthers: boolean;
+    destroyOnHide: boolean;
     get animation(): boolean;
     set animation(animation: boolean);
     static ɵfac: i0.ɵɵFactoryDeclaration<NgbAccordionConfig, never>;

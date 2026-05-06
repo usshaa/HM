@@ -39,5 +39,5 @@ export declare class NgbHighlight implements OnChanges {
     accentSensitive: boolean;
     ngOnChanges(changes: SimpleChanges): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<NgbHighlight, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<NgbHighlight, "ngb-highlight", never, { "highlightClass": "highlightClass"; "result": "result"; "term": "term"; "accentSensitive": "accentSensitive"; }, {}, never, never, true, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<NgbHighlight, "ngb-highlight", never, { "highlightClass": { "alias": "highlightClass"; "required": false; }; "result": { "alias": "result"; "required": true; }; "term": { "alias": "term"; "required": true; }; "accentSensitive": { "alias": "accentSensitive"; "required": false; }; }, {}, never, never, true, never>;
 }
