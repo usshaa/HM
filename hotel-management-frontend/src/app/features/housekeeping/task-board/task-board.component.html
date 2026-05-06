@@ -1,0 +1,67 @@
+<div class="task-board-container">
+  <div class="board-header">
+    <h2><mat-icon>cleaning_services</mat-icon> Housekeeping Task Board</h2>
+    <button mat-raised-button color="primary" (click)="showForm = !showForm">
+      <mat-icon>add</mat-icon> New Task
+    </button>
+  </div>
+
+  <div class="create-form" *ngIf="showForm">
+    <mat-card>
+      <mat-card-header><mat-card-title>Create New Task</mat-card-title></mat-card-header>
+      <mat-card-content>
+        <div class="form-row">
+          <mat-form-field><mat-label>Room ID</mat-label><input matInput type="number" [(ngModel)]="newTask.roomId"></mat-form-field>
+          <mat-form-field><mat-label>Assigned To (Staff ID)</mat-label><input matInput type="number" [(ngModel)]="newTask.assignedToId"></mat-form-field>
+          <mat-form-field><mat-label>Task Type</mat-label>
+            <mat-select [(ngModel)]="newTask.taskType">
+              <mat-option *ngFor="let t of ['CHECKOUT_CLEAN','DAILY_SERVICE','DEEP_CLEAN','INSPECTION']" [value]="t">{{t}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field><mat-label>Priority</mat-label>
+            <mat-select [(ngModel)]="newTask.priority">
+              <mat-option *ngFor="let p of ['LOW','MEDIUM','HIGH','URGENT']" [value]="p">{{p}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <mat-form-field class="full-width"><mat-label>Notes</mat-label><textarea matInput [(ngModel)]="newTask.notes"></textarea></mat-form-field>
+        <button mat-raised-button color="primary" (click)="createTask()">Create Task</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="kanban-board">
+    <div class="kanban-column pending">
+      <div class="column-header"><mat-icon>hourglass_empty</mat-icon> Pending ({{pendingTasks.length}})</div>
+      <div class="task-card" *ngFor="let task of pendingTasks">
+        <div class="task-room">Room {{task.roomNumber || task.roomId}}</div>
+        <div class="task-type">{{task.taskType}}</div>
+        <span class="priority-badge" [style.background]="getPriorityColor(task.priority)">{{task.priority}}</span>
+        <div class="task-assignee">{{task.assignedToName || 'Staff #' + task.assignedToId}}</div>
+        <p class="task-notes" *ngIf="task.notes">{{task.notes}}</p>
+        <button mat-stroked-button color="primary" (click)="moveTask(task, 'IN_PROGRESS')">Start</button>
+      </div>
+    </div>
+
+    <div class="kanban-column in-progress">
+      <div class="column-header"><mat-icon>autorenew</mat-icon> In Progress ({{inProgressTasks.length}})</div>
+      <div class="task-card" *ngFor="let task of inProgressTasks">
+        <div class="task-room">Room {{task.roomNumber || task.roomId}}</div>
+        <div class="task-type">{{task.taskType}}</div>
+        <span class="priority-badge" [style.background]="getPriorityColor(task.priority)">{{task.priority}}</span>
+        <div class="task-assignee">{{task.assignedToName || 'Staff #' + task.assignedToId}}</div>
+        <button mat-stroked-button color="accent" (click)="moveTask(task, 'COMPLETED')">Complete</button>
+      </div>
+    </div>
+
+    <div class="kanban-column completed">
+      <div class="column-header"><mat-icon>check_circle</mat-icon> Completed ({{completedTasks.length}})</div>
+      <div class="task-card" *ngFor="let task of completedTasks">
+        <div class="task-room">Room {{task.roomNumber || task.roomId}}</div>
+        <div class="task-type">{{task.taskType}}</div>
+        <span class="priority-badge" [style.background]="getPriorityColor(task.priority)">{{task.priority}}</span>
+        <div class="task-assignee">{{task.assignedToName || 'Staff #' + task.assignedToId}}</div>
+      </div>
+    </div>
+  </div>
+</div>

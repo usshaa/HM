@@ -1,0 +1,42 @@
+<div class="insights-container">
+  <h2><mat-icon>auto_awesome</mat-icon> AI-Powered Insights</h2>
+
+  <div class="section">
+    <div class="section-header">
+      <h3>Room Recommendations</h3>
+      <button mat-stroked-button color="primary" (click)="loadRecommendations()"><mat-icon>refresh</mat-icon> Regenerate</button>
+    </div>
+    <mat-spinner *ngIf="loadingRec" diameter="40"></mat-spinner>
+    <div class="cards-grid" *ngIf="!loadingRec">
+      <mat-card *ngFor="let rec of recommendations" class="insight-card">
+        <mat-card-header>
+          <mat-icon mat-card-avatar class="card-icon">{{getCategoryIcon(rec.category)}}</mat-icon>
+          <mat-card-title>{{rec.title}}</mat-card-title>
+          <mat-card-subtitle>{{rec.category}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content><p>{{rec.description}}</p></mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h3>Upsell Opportunities</h3>
+      <button mat-stroked-button color="primary" (click)="loadUpsellTips()"><mat-icon>refresh</mat-icon> Refresh</button>
+    </div>
+    <mat-spinner *ngIf="loadingTips" diameter="40"></mat-spinner>
+    <div class="cards-grid" *ngIf="!loadingTips">
+      <mat-card *ngFor="let tip of upsellTips" class="insight-card upsell">
+        <mat-card-header>
+          <mat-icon mat-card-avatar class="card-icon">trending_up</mat-icon>
+          <mat-card-title>{{tip.title}}</mat-card-title>
+          <mat-card-subtitle *ngIf="tip.estimatedRevenue">Est. Revenue: AED {{tip.estimatedRevenue}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{tip.description}}</p>
+          <span class="priority-tag" *ngIf="tip.priority">{{tip.priority}}</span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

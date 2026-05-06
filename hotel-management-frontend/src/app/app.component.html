@@ -1,0 +1,54 @@
+<div class="app-container">
+  <!-- Toolbar -->
+  <mat-toolbar color="primary" *ngIf="isLoggedIn && !isAuthPage()" class="app-toolbar">
+    <button mat-icon-button (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="app-title">🏨 {{ title }}</span>
+    <span class="spacer"></span>
+
+    <div class="user-section" *ngIf="currentUser">
+      <span class="user-name">{{ currentUser.name }} ({{ currentUser.role }})</span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navigateTo('/profile')">
+          <mat-icon>person</mat-icon><span>Profile</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon><span>Logout</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+
+  <!-- Sidenav + Content -->
+  <mat-sidenav-container class="sidenav-container" *ngIf="isLoggedIn && !isAuthPage()">
+    <mat-sidenav #sidenav mode="side" [opened]="sidenavOpen" class="app-sidenav">
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let item of getVisibleNavItems()" [routerLink]="item.route"
+           routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: item.route === '/dashboard'}">
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          <span matListItemTitle>{{ item.label }}</span>
+        </a>
+      </mat-nav-list>
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <a mat-list-item (click)="logout()" class="logout-link">
+          <mat-icon matListItemIcon>exit_to_app</mat-icon>
+          <span matListItemTitle>Logout</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="main-content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!-- Auth Pages (no sidenav) -->
+  <div class="auth-content" *ngIf="!isLoggedIn || isAuthPage()">
+    <router-outlet></router-outlet>
+  </div>
+</div>

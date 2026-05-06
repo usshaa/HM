@@ -1,0 +1,44 @@
+<div class="profile-container">
+  <h2><mat-icon>person</mat-icon> My Profile</h2>
+  <mat-tab-group>
+    <mat-tab label="Profile Info">
+      <mat-card class="profile-card">
+        <mat-card-content>
+          <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+            <mat-form-field class="full-width"><mat-label>Full Name</mat-label><input matInput formControlName="name"></mat-form-field>
+            <mat-form-field class="full-width"><mat-label>Email</mat-label><input matInput [value]="currentUser?.email" disabled></mat-form-field>
+            <mat-form-field class="full-width"><mat-label>Phone</mat-label><input matInput formControlName="phone"></mat-form-field>
+            <div class="form-row">
+              <mat-form-field><mat-label>ID Proof Type</mat-label>
+                <mat-select formControlName="idProofType">
+                  <mat-option value="PASSPORT">Passport</mat-option>
+                  <mat-option value="NATIONAL_ID">National ID</mat-option>
+                  <mat-option value="DRIVING_LICENSE">Driving License</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field><mat-label>ID Proof Number</mat-label><input matInput formControlName="idProofNumber"></mat-form-field>
+              <mat-form-field><mat-label>Currency</mat-label>
+                <mat-select formControlName="preferredCurrency">
+                  <mat-option value="AED">AED</mat-option><mat-option value="USD">USD</mat-option><mat-option value="EUR">EUR</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary" type="submit">Save Changes</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Change Password">
+      <mat-card class="profile-card">
+        <mat-card-content>
+          <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+            <mat-form-field class="full-width"><mat-label>Current Password</mat-label><input matInput [type]="hideOld ? 'password' : 'text'" formControlName="currentPassword"><button mat-icon-button matSuffix type="button" (click)="hideOld=!hideOld"><mat-icon>{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon></button></mat-form-field>
+            <mat-form-field class="full-width"><mat-label>New Password</mat-label><input matInput [type]="hideNew ? 'password' : 'text'" formControlName="newPassword"><button mat-icon-button matSuffix type="button" (click)="hideNew=!hideNew"><mat-icon>{{hideNew ? 'visibility_off' : 'visibility'}}</mat-icon></button></mat-form-field>
+            <mat-form-field class="full-width"><mat-label>Confirm Password</mat-label><input matInput [type]="hideConfirm ? 'password' : 'text'" formControlName="confirmPassword"><button mat-icon-button matSuffix type="button" (click)="hideConfirm=!hideConfirm"><mat-icon>{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon></button></mat-form-field>
+            <button mat-raised-button color="warn" type="submit">Change Password</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+</div>

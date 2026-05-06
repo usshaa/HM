@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: hotel_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hotel_management
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./hotel-management-backend/src/main/resources/db/migration:/docker-entrypoint-initdb.d
+    networks:
+      - hotel-network
+
+  backend:
+    build:
+      context: ./hotel-management-backend
+      dockerfile: Dockerfile
+    container_name: hotel_backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/hotel_management
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+    depends_on:
+      - mysql
+    networks:
+      - hotel-network
+
+  frontend:
+    build:
+      context: ./hotel-management-frontend
+      dockerfile: Dockerfile
+    container_name: hotel_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - hotel-network
+
+volumes:
+  mysql_data:
+
+networks:
+  hotel-network:
+    driver: bridge

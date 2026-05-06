@@ -1,0 +1,4 @@
+.profile-container { padding: 24px; max-width: 700px; margin: 0 auto; h2 { display: flex; align-items: center; gap: 8px; color: #1a237e; } }
+.profile-card { margin-top: 16px; border-radius: 12px; }
+.full-width { width: 100%; }
+.form-row { display: flex; gap: 16px; flex-wrap: wrap; mat-form-field { flex: 1; min-width: 180px; } }
